@@ -1,13 +1,6 @@
-
-pipeline { 
-    agent {
-      docker { 
-          image 'node:8'
-          args '-u root:root'
-      }
-    } 
-    stages {
-        stage('Checkout') {
+node {
+  try {
+    stage('Checkout') {
       checkout scm
     }
     stage('Environment') {
@@ -33,5 +26,8 @@ pipeline {
         sh 'docker rmi -f react-app localhost:5000/react-app'
       }
     }
-    }
+  }
+  catch (err) {
+    throw err
+  }
 }
