@@ -1,10 +1,10 @@
 # Extending image
 FROM node:carbon
 
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get -y install autoconf automake libtool nasm make pkg-config git apt-utils
+RUN apk update && apk install -y --no-install-recommends apt-utils
+RUN apk update
+RUN apk upgrade -y
+RUN apk -y install autoconf automake libtool nasm make pkg-config git apt-utils
 
 
 # Create app directory
