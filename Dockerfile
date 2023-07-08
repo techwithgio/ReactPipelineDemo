@@ -1,8 +1,11 @@
 # Extending image
 FROM node:carbon
+FROM ubuntu
 
-RUN apt-get update
-RUN apt-get upgrade -y
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y nodejs \
+    npm  
 RUN apt-get -y install autoconf automake libtool nasm make pkg-config git apt-utils
 
 # Create app directory
