@@ -6,10 +6,12 @@ pipeline {
   stages {
         
     stage('Environment') {
-      sh 'git --version'
-      echo "Branch: ${env.BRANCH_NAME}"
-      sh 'docker -v'
-      sh 'printenv'
+      steps {
+        sh 'git --version'
+        echo "Branch: ${env.BRANCH_NAME}"
+        sh 'docker -v'
+        sh 'printenv'
+      }
     }
      stage('Install dependencies') {
       steps {
