@@ -38,11 +38,10 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          withCredentials([string(credentialsId: 'dockerhub-pass', variable: 'dockerhub-pass')]) {
-            // some block
-            sh 'docker login -u techwithgio --password-stdin ${dockerhub-pass}'
-            sh 'docker push techwithgio/reactapp'
-          }
+          docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-creds') {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+        }
 
           // docker.withRegistry( '', registryCredential ) {
           //   dockerImage.push("$BUILD_NUMBER")
