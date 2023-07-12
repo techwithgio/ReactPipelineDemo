@@ -40,7 +40,7 @@ pipeline {
         script {
           withCredentials([string(credentialsId: 'dockerhub-pass', variable: 'dockerhub-pass')]) {
             // some block
-            sh 'docker login -u techwithgio --password-stdin ${dockerhub-password}'
+            sh 'docker login -u techwithgio --password-stdin ${dockerhub-pass}'
             sh 'docker push techwithgio/reactapp'
           }
 
