@@ -20,7 +20,7 @@ pipeline {
     }
      stage('Install dependencies') {
       steps {
-        sh 'npm reinstall'
+        sh 'npm run reinstall'
       }
     }
     stage('Test') {
