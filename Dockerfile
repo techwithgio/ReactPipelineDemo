@@ -1,5 +1,5 @@
 # Extending image
-FROM node:carbon
+FROM node:latest
 FROM ubuntu
 
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
