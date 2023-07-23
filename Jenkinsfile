@@ -20,6 +20,7 @@ pipeline {
     }
      stage('Install dependencies') {
       steps {
+        sh 'npm cache clean'
         sh 'npm install'
       }
     }
@@ -40,7 +41,7 @@ pipeline {
         script {
           docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-creds') {
             dockerImage.push("${env.BUILD_NUMBER}")
-            dockerImage.push("latest")
+            // dockerImage.push("latest")
         }
 
           // docker.withRegistry( '', registryCredential ) {
